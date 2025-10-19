@@ -15,7 +15,7 @@ const Login = () => {
     logIn(email, password)
       .then(res => {
         const user = res.user;
-        console.log(user);
+        // console.log(user);
         navigate(`${location.state ? location.state : '/'}`);
       })
       .catch(error => {
@@ -54,11 +54,9 @@ const Login = () => {
               <div>
                 <a className="link link-hover">Forgot password?</a>
               </div>
-
               <div>
                 {error && <p className="text-red-500 text-xs">{error}</p>}
               </div>
-
               <button type="submit" className="btn btn-neutral mt-3">
                 Login
               </button>

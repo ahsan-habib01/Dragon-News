@@ -6,8 +6,8 @@ const Header = () => {
   return (
     <div className="flex items-center justify-center flex-col gap-3 py-5">
       <img className="w-120" src={logo} alt="" />
-      <p className="text-accent">Journalism Without Fear or Favour</p>
-      <p className=' text-accent'>{format(new Date(), 'EEEE, MMMM MM, yyyy')}</p>
+      <p className="text-accent">Journalism Without Fear or Favour!</p>
+      <p className=' text-accent'>{format(new Date(), 'EEEE, MMMM dd, yyyy')}</p>
     </div>
   );
 };
