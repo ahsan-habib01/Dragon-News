@@ -1,10 +1,10 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../Providers/AuthProvider';
 
 const Register = () => {
   const { createUser, setUser } = use(AuthContext);
+  const [error, setError] = useState('');
 
   const handleRegister = e => {
     e.preventDefault();
@@ -13,13 +13,16 @@ const Register = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log('submit', name, photo, email, password);
-    createUser(email, password).then(result => {
-      const user = result.user;
-      console.log(user);
-      setUser(user)
-    }).catch(error => {
-      console.log(error.message);
-    })
+    createUser(email, password)
+      .then(result => {
+        const user = result.user;
+        // console.log(user);
+        setUser(user);
+      })
+      .catch(error => {
+        // console.log(error.message);
+        setError(error.message);
+      });
   };
 
   return (
@@ -71,6 +74,10 @@ const Register = () => {
                 placeholder="Enter Your Password"
                 required
               />
+
+              <div>
+                {error && <p className="text-red-500 text-xs">{error}</p>}
+              </div>
 
               <button type="submit" className="btn btn-neutral mt-4">
                 Register
