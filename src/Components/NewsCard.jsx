@@ -1,9 +1,10 @@
 import { BsShare } from 'react-icons/bs';
 import { FaStar, FaRegEye, FaShareAlt, FaBookmark, FaRegBookmark } from 'react-icons/fa';
 import { IoShareSocialOutline } from 'react-icons/io5';
+import { Link } from 'react-router';
 
 const NewsCard = ({ news }) => {
-  const { title, author, thumbnail_url, rating, total_view, details } = news;
+  const {id, title, author, thumbnail_url, rating, total_view, details } = news;
 
   return (
     <div className="bg-base-100 border-gray-100 rounded shadow-sm overflow-hidden">
@@ -46,7 +47,7 @@ const NewsCard = ({ news }) => {
       {/* Details */}
       <div className="px-4 py-3">
         <p className="text-sm text-accent line-clamp-3">{details}</p>
-        <button className="text-secondary font-semibold">Read More</button>
+        <Link to={`/news-details/${id}`} className="text-secondary font-semibold hover:underline">Read More</Link>
       </div>
 
       {/* Footer */}
